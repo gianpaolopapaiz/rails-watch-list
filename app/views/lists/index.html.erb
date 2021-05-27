@@ -1,14 +1,18 @@
-<h1>Lists</h1>
-
-<% if @lists.length < 1 %>
-	<p>(You don't have a list created yet!)</p>
-<% else %>
-	<ul>
-		<% @lists.each do |list| %>
-			<li><%= link_to list.name, list_path(list) %></li>
-		<% end %>
-	</ul>
-<% end %>
-
-<%= link_to 'Add a list', new_list_path %>
-
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/background.png);">
+  <div class="container">
+    <h1>Save any kind of movies</h1>
+  </div>
+</div>
+<div class='container mt-4'>
+	<h3>My lists</h3>
+	<div>
+	<% if @lists.length < 1 %>
+		<p>(You don't have a list created yet!)</p>
+	<% else %>
+		<ul class='d-flex'>
+			<% @lists.each do |list| %>
+				<li class='card w-25 h- m-2'><%= link_to list.name, list_path(list) %></li>
+			<% end %>
+		</ul>
+	<% end %>
+</div>
