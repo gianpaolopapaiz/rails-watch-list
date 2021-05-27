@@ -1,0 +1,14 @@
+<h1><%= @list.name %></h1>
+
+<% if @bookmarks.length < 1 %>
+	<p>(You didn't add bookmarks to your list!)</p>
+<% else %>
+	<ul>
+		<% @bookmarks.each do |bookmark| %>
+			<li><%= link_to bookmark.movie.title, '#' %> (<%=bookmark.comment%>) <%= link_to 'delete', bookmark_path(bookmark), method: :delete, data: { confirm: "Are you sure?" } %></li>
+		<% end %>
+	</ul>
+<% end %>
+
+<p><%= link_to 'Add movie',  new_list_bookmark_path(@list) %></p>
+<p><%= link_to 'Go back', lists_path %></p>

@@ -1,0 +1,14 @@
+<h1>Lists</h1>
+
+<% if @lists.length < 1 %>
+	<p>(You don't have a list created yet!)</p>
+<% else %>
+	<ul>
+		<% @lists.each do |list| %>
+			<li><%= link_to list.name, list_path(list) %></li>
+		<% end %>
+	</ul>
+<% end %>
+
+<%= link_to 'Add a list', new_list_path %>
+
