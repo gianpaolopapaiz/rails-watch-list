@@ -1,7 +1,8 @@
+<%= cl_image_tag @list.photo.key if @list.photo.attached? %>
 <h1><%= @list.name %></h1>
 
 <% if @bookmarks.length < 1 %>
-	<p>(You didn't add bookmarks to your list!)</p>
+	<p>(You didn't added bookmarks to your list yet!)</p>
 <% else %>
 	<ul>
 		<% @bookmarks.each do |bookmark| %>
@@ -11,4 +12,5 @@
 <% end %>
 
 <p><%= link_to 'Add movie',  new_list_bookmark_path(@list) %></p>
+<%= link_to "Delete list", list_path(@list), method: :delete, data: { confirm: "Are you sure?" } %>
 <p><%= link_to 'Go back', lists_path %></p>

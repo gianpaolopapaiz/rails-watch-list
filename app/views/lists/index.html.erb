@@ -11,7 +11,14 @@
 	<% else %>
 		<ul class='d-flex'>
 			<% @lists.each do |list| %>
-				<li class='card w-25 h- m-2'><%= link_to list.name, list_path(list) %></li>
+				<li class='card w-25 h- m-2'>
+					<div class="card" style="width: 18rem;">
+						<%= cl_image_tag list.photo.key if list.photo.attached? %>
+						<div class="card-body">
+							<p class="card-text"><%= link_to list.name, list_path(list) %></p>
+						</div>
+					</div>
+				</li>
 			<% end %>
 		</ul>
 	<% end %>
