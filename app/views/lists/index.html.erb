@@ -3,23 +3,21 @@
     <h1>Save any kind of movies</h1>
   </div>
 </div>
+
 <div class='container mt-4'>
 	<h3>My lists</h3>
-	<div>
 	<% if @lists.length < 1 %>
 		<p>(You don't have a list created yet!)</p>
 	<% else %>
-		<ul class='d-flex'>
+		<div class='d-flex flex-wrap justify-content-start my-3'>
 			<% @lists.each do |list| %>
-				<li class='card w-25 h- m-2'>
-					<div class="card" style="width: 18rem;">
-						<%= cl_image_tag list.photo.key if list.photo.attached? %>
-						<div class="card-body">
-							<p class="card-text"><%= link_to list.name, list_path(list) %></p>
-						</div>
+				<div class="card mx-2" style="width: 18rem;">
+					<%= cl_image_tag list.photo.key, height: 200, crop: :fill if list.photo.attached? %>
+					<div class="card-body">
+						<p class="card-text"><%= link_to list.name, list_path(list) %></p>
 					</div>
-				</li>
+				</div>
 			<% end %>
-		</ul>
+		</div>
 	<% end %>
 </div>
